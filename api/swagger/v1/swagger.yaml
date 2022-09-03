@@ -1,11 +1,149 @@
 ---
-openapi: 3.0.1
+swagger: "2.0"
 info:
-  title: API V1
-  version: v1
-paths: {}
-servers:
-- url: https://{defaultHost}
-  variables:
-    defaultHost:
-      default: www.example.com
+  title: "Rest API - Book"
+  description: ""
+  version: "1.0.0"
+  contact:
+    email: "carlosalves369m@hotmail.com"
+  license:
+    name: "Apache 2.0"
+    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
+host: "localhost:3000"
+basePath: "/api/v1/"
+tags:
+- name: "Authentication"
+- name: "Books"
+- name: "Reviews"
+schemes:
+- "https"
+- "http"
+paths:
+  /sign_in:
+    post:
+      tags:
+      - "Authentication"
+      produces:
+      - "application/json"
+      responses:
+        "200":
+          description: "successful operation"
+  /sign_up:
+    post:
+      tags:
+      - "Authentication"
+      produces:
+      - "application/json"
+      responses:
+        "200":
+          description: "successful operation"
+  /log_out:
+    delete:
+      tags:
+      - "Authentication"
+      produces:
+      - "application/json"
+      responses:
+        "200":
+          description: "successful operation"
+  /books:
+    get:
+      tags:
+      - "Books"
+      produces:
+      - "application/json"
+      responses:
+        "200":
+          description: "successful operation"
+  /books/{id}:
+    get:
+      tags:
+      - "Books"
+      parameters:
+      - name: "id"
+        in: "path"
+        description: "ID of order to book list"
+        required: true
+        type: "integer"
+        format: "int64"
+      produces:
+      - "application/json"
+      responses:
+        "200":
+          description: "successful operation"
+  /books/{id}/reviews:
+    post:
+      tags:
+      - "Reviews"
+      parameters:
+      - name: "id"
+        in: "path"
+        description: "ID of order to orders list"
+        required: true
+        type: "integer"
+        format: "int64"
+      produces:
+      - "application/json"
+      responses:
+        "200":
+          description: "successful operation"
+  /books/{id}/reviews/{id_review_a}:
+    put:
+      tags:
+      - "Reviews"
+      parameters:
+      - name: "id"
+        in: "path"
+        description: "ID of order to orders list"
+        required: true
+        type: "integer"
+        format: "int64"
+      - name: "id_review_a"
+        in: "path"
+        description: "ID of order to orders list"
+        required: true
+        type: "integer"
+        format: "int64"
+      produces:
+      - "application/json"
+      responses:
+        "200":
+          description: "successful operation"
+  /books/{id}/reviews/{id_review}:
+    delete:
+      tags:
+      - "Reviews"
+      parameters:
+      - name: "id"
+        in: "path"
+        description: "ID of order to orders list"
+        required: true
+        type: "integer"
+        format: "int64"
+      - name: "id_review"
+        in: "path"
+        description: "ID of order to orders list"
+        required: true
+        type: "integer"
+        format: "int64"
+      produces:
+      - "application/json"
+      responses:
+        "200":
+          description: "successful operation"
+  /books/{id_a}/reviews:
+    get:
+      tags:
+      - "Reviews"
+      parameters:
+      - name: id_a
+        in: "path"
+        description: "ID of order to orders list"
+        required: true
+        type: "integer"
+        format: "int64"
+      produces:
+      - "application/json"
+      responses:
+        "200":
+          description: "successful operation"
